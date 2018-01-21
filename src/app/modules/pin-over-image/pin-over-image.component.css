@@ -1,0 +1,25 @@
+h1 {
+    color: red;
+  }
+
+.outerDiv{
+    background-color: #000;
+    overflow:hidden;
+    position: relative;
+}
+
+.progressImg{
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.innerDiv{
+    width: 600px;
+    height: 700px;
+    position: absolute;
+    background-repeat: no-repeat;
+}

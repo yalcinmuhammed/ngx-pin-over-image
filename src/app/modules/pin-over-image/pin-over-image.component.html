@@ -1,0 +1,15 @@
+<div #outerDiv class="outerDiv" >
+    <img #progressImg class="progressImg"/>
+  <div #innerDiv class="innerDiv"
+  (mousedown)="onMouseDownInnerDiv($event)"
+  (mouseup)="onMouseUpInnerDiv($event)"
+  (mousemove)="onMouseMoveInnerDiv($event)"
+  (mouseleave)="onMouseLeaveInnerDiv($event)"
+  mouseWheel (mouseWheelUp)="mouseWheelUpFunc(event)" (mouseWheelDown)="mouseWheelDownFunc(event)" 
+  (dblclick)="addPin()">
+    <pin *ngFor="let pin of pinList"></pin>
+  </div>
+</div>
+<div>
+    <button >Add Pin</button>
+</div>
