@@ -16,6 +16,8 @@ export class PinOverImageComponent implements OnInit {
   urlImage:string="https://busraabaci.files.wordpress.com/2015/04/doga-2.jpg";
   tmpImg: HTMLImageElement; // will be used to load the actual image before showing it
 
+  pinRadius:number = 10;
+
 
   @ViewChild('outerDiv') outerDivRef:ElementRef;
   outerDiv:HTMLDivElement;
@@ -28,6 +30,8 @@ export class PinOverImageComponent implements OnInit {
 
   shiftingDiv:ShiftingDivModel = new ShiftingDivModel();
   currentMousePoint:PointModel = new PointModel();
+
+  shiftingPin:PinModel = null;
 
   pinList:PinModel[] = [];
 
@@ -46,6 +50,24 @@ export class PinOverImageComponent implements OnInit {
     this.progressImg.src = 'http://www.downgraf.com/wp-content/uploads/2014/09/01-progress.gif';
     
     this.onLoadImage();
+    
+  }
+
+  fillPinList(){
+    let pin1 = new PinModel();
+    pin1.id = 1;
+    pin1.width=20;
+    pin1.height=20;
+    pin1.borderRadius = 10;
+    pin1.radius=10;
+    pin1.background="url(https://cdn4.iconfinder.com/data/icons/iconsimple-places/512/pin_1-128.png)";
+    //pin1.background="red";
+    let p1:PointModel = new PointModel();
+    p1.left = 100;
+    p1.top = 100;
+    pin1.point = p1;
+    this.pinList.push(pin1);
+    console.log("this.pinList: ",this.pinList);
   }
 
   ngOnInit() {
@@ -62,6 +84,7 @@ export class PinOverImageComponent implements OnInit {
       this.innerDiv.style.width = this.tmpImg.width+"px";
       this.innerDiv.style.height = this.tmpImg.height+"px";
       this.centerInnerDiv();
+      this.fillPinList();
     }
     
     // background loading logic
@@ -99,8 +122,14 @@ export class PinOverImageComponent implements OnInit {
   }
 
   onMouseMoveInnerDiv(event:MouseEvent):void{
-    if(this.shiftingDiv.canShift){
-        
+    if(this.shiftingPin){
+        let point:PointModel = this.getMousePos(this.innerDiv, event, this.pinRadius);
+        if(point.left >= 0 && point.left <= this.innerDiv.clientWidth-2*this.pinRadius)
+            this.shiftingPin.point.left = point.left;
+        if(point.top >= 0 && point.top <= this.innerDiv.clientHeight-2*this.pinRadius)
+            this.shiftingPin.point.top  = point.top;
+    }
+    else if(this.shiftingDiv.canShift){   
         if(this.shiftingDiv.canShiftHorizontal){
             if(this.outerDiv.clientWidth - this.innerDiv.clientWidth < this.innerDiv.offsetLeft){
                 this.shiftingDiv.rightCtrl = true;
@@ -194,6 +223,33 @@ export class PinOverImageComponent implements OnInit {
 
   addPin(){
     console.log("double click");
+  }
+
+  /* HANDLE PIN MOUSE EVENTS*/
+  handlePinMouseDown(pinModel:PinModel){
+    this.shiftingPin = pinModel;
+  }
+
+  handlePinMouseUp(pinModel:PinModel){
+    this.shiftingPin = null;
+  }
+
+  handlePinMouseMove(data:{pinModel:PinModel, event:MouseEvent}){
+    if(this.shiftingPin){
+        let point:PointModel = this.getMousePos(this.innerDiv, data.event, this.pinRadius);
+        if(point.left >= 0 && point.left <= this.innerDiv.clientWidth-2*this.pinRadius){
+            this.shiftingPin.point.left = point.left;
+        }
+        if(point.top >= 0 && point.top <= this.innerDiv.clientHeight-2*this.pinRadius){
+            this.shiftingPin.point.top  = point.top;
+        }
+    }
+  }
+
+  handlePinMouseClick(pinModel:PinModel){
+  }
+
+  handlePinMouseLeave(pinModel:PinModel){
   }
 
 }

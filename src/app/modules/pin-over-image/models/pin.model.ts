@@ -1,7 +1,12 @@
 import { PointModel } from './point.model';
 export class PinModel{
+    id:number;
     point:PointModel;
-    backgroundUrl:string;
+    width:number;
+    height:number;
+    radius:number;
+    borderRadius:number;
+    background:string;
 
     constructor(){
         

@@ -7,7 +7,14 @@
   (mouseleave)="onMouseLeaveInnerDiv($event)"
   mouseWheel (mouseWheelUp)="mouseWheelUpFunc(event)" (mouseWheelDown)="mouseWheelDownFunc(event)" 
   (dblclick)="addPin()">
-    <pin *ngFor="let pin of pinList"></pin>
+    <pin *ngFor="let pinModel of pinList" 
+    (pinMouseDown)="handlePinMouseDown($event)"
+    (pinMouseUp)="handlePinMouseUp($event)" 
+    (pinMouseMove)="handlePinMouseMove($event)"
+    (pinMouseClick)="handlePinMouseClick($event)"
+    (pinMouseLeave)="handlePinMouseLeave($event)"
+    [pinData]="pinModel">
+    </pin>
   </div>
 </div>
 <div>

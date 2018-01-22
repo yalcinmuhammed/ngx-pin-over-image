@@ -10,4 +10,5 @@ export class PointModel{
     subtraction(_point:PointModel){
         return new PointModel(this.left-_point.left, this.top-_point.top);
     }
+
 }
