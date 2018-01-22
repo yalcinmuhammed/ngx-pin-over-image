@@ -1,5 +1,6 @@
 # NgxPinOverImage
 This project is still being developed.
+For more information please check this [site](https://yalcinmuhammed.github.io/ngx-pin-over-image/)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
 
