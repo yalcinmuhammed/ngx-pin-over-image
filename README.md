@@ -4,7 +4,7 @@ For more information please check this [site](https://yalcinmuhammed.github.io/n
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
 
-[![Screen Shot](images/screenshot.png)]
+![Screen Shot](images/screenshot.png)
 
 ## Usage
 `app.module.ts` file should look likes to:
