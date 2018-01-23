@@ -10,7 +10,12 @@ h1 {
 
 .progressImg{
     position: absolute;
+    border: 0px;
     margin: auto;
+    width: 50px;
+    height: 50px;
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
     top: 0;
     left: 0;
     right: 0;
@@ -22,4 +27,25 @@ h1 {
     height: 700px;
     position: absolute;
     background-repeat: no-repeat;
+}
+
+.bottomDiv{
+    position: absolute;
+    text-align: right;
+    z-index: 15;
+    background-repeat: no-repeat;
+    background: linear-gradient(#000000b0, #000000);
+    visibility: hidden;
+}
+
+.icon{
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 20px 20px;
+    padding: 5px 5px 5px 20px;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 20px;
+    font-size: 12px;
 }

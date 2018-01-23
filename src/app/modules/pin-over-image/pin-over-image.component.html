@@ -1,11 +1,13 @@
-<div #outerDiv class="outerDiv" >
-    <img #progressImg class="progressImg"/>
+<div #outerDiv class="outerDiv" 
+(mouseenter)="onMouseEnterOuterDiv($event)"
+(mouseleave) ="onMouseLeaveOuterDiv($event)">
+  <img #progressImg class="progressImg"/>
   <div #innerDiv class="innerDiv"
   (mousedown)="onMouseDownInnerDiv($event)"
   (mouseup)="onMouseUpInnerDiv($event)"
   (mousemove)="onMouseMoveInnerDiv($event)"
   (mouseleave)="onMouseLeaveInnerDiv($event)"
-  mouseWheel (mouseWheelUp)="mouseWheelUpFunc(event)" (mouseWheelDown)="mouseWheelDownFunc(event)" 
+  mouseWheel (mouseWheelUp)="zoomIn()" (mouseWheelDown)="zoomOut()" 
   (dblclick)="addPin()">
     <pin *ngFor="let pinModel of pinList" 
     (pinMouseDown)="handlePinMouseDown($event)"
@@ -13,10 +15,18 @@
     (pinMouseMove)="handlePinMouseMove($event)"
     (pinMouseClick)="handlePinMouseClick($event)"
     (pinMouseLeave)="handlePinMouseLeave($event)"
-    [pinData]="pinModel">
+    [pinData]="pinModel"
+    [optionData]="options">
     </pin>
   </div>
+  <div #bottomDiv class="bottomDiv">
+    <div style="margin:5px;">
+        <a href="javascript:void(0)" (click)="zoomIn()"   class="icon" [style.color]="options.textColor" [style.backgroundImage]="'url('+options.zoomInIconUrl+')'">&nbsp;{{options.zoomInText}}</a>
+        <a href="javascript:void(0)" (click)="zoomOut()"  class="icon" [style.color]="options.textColor" [style.backgroundImage]="'url('+options.zoomOutIconUrl+')'">&nbsp;{{options.zoomOutText}}</a>
+        <a href="javascript:void(0)" (click)="hideShowPins()" class="icon" [style.color]="options.textColor" [style.backgroundImage]="'url('+options.hideShowIconUrl+')'">&nbsp;{{options.hideShowText}}</a>
+        <a href="javascript:void(0)" (click)="addPin()" class="icon" [style.color]="options.textColor" [style.backgroundImage]="'url('+options.addPinIconUrl+')'">&nbsp;{{options.addPinText}}</a>
+    </div>
+      
+  </div>
 </div>
-<div>
-    <button >Add Pin</button>
-</div>
+

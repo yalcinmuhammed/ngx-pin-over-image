@@ -1,4 +1,6 @@
 import {Component, ViewChild, Output, Input, EventEmitter, ElementRef, OnInit } from '@angular/core';
+//models
+import { OptionModel } from './../models/option.model';
 import { PinModel } from './../models/pin.model';
 import { PointModel } from './../models/point.model';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -11,6 +13,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class PinComponent implements OnInit {
 
   pinModel:PinModel = null;
+  options:OptionModel = null;
 
   @Output() pinMouseDown  = new EventEmitter();
   @Output() pinMouseUp    = new EventEmitter();
@@ -20,7 +23,10 @@ export class PinComponent implements OnInit {
 
   @Input() set pinData(pinModel:PinModel) {
     this.pinModel = pinModel;
-    //this.pinModel.style = this.domSanitizer.bypassSecurityTrustStyle(this.pinModel.style);
+  }
+
+  @Input() set optionData(options:OptionModel) {
+    this.options = options;
   }
 
   constructor(private domSanitizer:DomSanitizer) { 
