@@ -90,7 +90,6 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## OptionModel Properties
 
-```html
 <table>
   <tr>
     <th>#</th><th>Property</th><th>Type</th><th>Description</th>
@@ -153,7 +152,6 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
     <td>19</td><td>bottomDivBackground</td><td>string</td><td>background url (url('https://...')) or color div of the icons(add pin, hide/show pins, zoom in, zoom out)</td>
   </tr>
 </table>
-```
 
 ## Code scaffolding
 
