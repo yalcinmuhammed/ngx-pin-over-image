@@ -14,6 +14,7 @@ import { ShiftingDivModel } from './models/shiftingDiv.model';
 })
 export class PinOverImageComponent implements OnInit {
 
+    isLoaded:boolean;
     options:OptionModel = null;
     pinList:PinModel[] = [];
 
@@ -85,6 +86,7 @@ export class PinOverImageComponent implements OnInit {
             this.innerDiv.style.backgroundImage = "url("+this.options.imageUrl+")";
             this.innerDiv.style.width = this.tmpImg.width+"px";
             this.innerDiv.style.height = this.tmpImg.height+"px";
+            this.isLoaded = true;
             this.centerInnerDiv();
         }
         
@@ -185,8 +187,6 @@ export class PinOverImageComponent implements OnInit {
                     this.innerDiv.style.top = (this.innerDiv.offsetTop + diffPoint.top)+"px";
                 }
             }
-            //this.innerDiv.style.left  = ((this.innerDiv.clientLeft - this.outerDiv.clientWidth/2 ) / this.innerDiv.clientWidth)+"px";
-            //this.innerDiv.style.top   = ((this.innerDiv.clientTop - this.outerDiv.clientHeight/2 ) / this.innerDiv.clientHeight)+"px";
         }
     }
 

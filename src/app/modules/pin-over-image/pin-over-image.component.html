@@ -9,15 +9,17 @@
   (mouseleave)="onMouseLeaveInnerDiv($event)"
   mouseWheel (mouseWheelUp)="zoomIn()" (mouseWheelDown)="zoomOut()" 
   (dblclick)="addPin()">
-    <pin *ngFor="let pinModel of pinList" 
-    (pinMouseDown)="handlePinMouseDown($event)"
-    (pinMouseUp)="handlePinMouseUp($event)" 
-    (pinMouseMove)="handlePinMouseMove($event)"
-    (pinMouseClick)="handlePinMouseClick($event)"
-    (pinMouseLeave)="handlePinMouseLeave($event)"
-    [pinData]="pinModel"
-    [optionData]="options">
-    </pin>
+    <div *ngIf="isLoaded">
+      <pin *ngFor="let pinModel of pinList" 
+      (pinMouseDown)="handlePinMouseDown($event)"
+      (pinMouseUp)="handlePinMouseUp($event)" 
+      (pinMouseMove)="handlePinMouseMove($event)"
+      (pinMouseClick)="handlePinMouseClick($event)"
+      (pinMouseLeave)="handlePinMouseLeave($event)"
+      [pinData]="pinModel"
+      [optionData]="options">
+      </pin>
+    </div>
   </div>
   <div #bottomDiv class="bottomDiv">
     <div style="margin:5px;">
